@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">A2</string>
+    <string name="att">Attractions</string>
+    <string name="rest">Restaurants</string>
+
+    <string-array name="listOfAttractions">
+        <item>The Lincoln Park Zoo</item>
+        <item>Navy Pier</item>
+        <item>The Museum of Science and Industry</item>
+        <item>The Art Institute</item>
+        <item>The TILT</item>
+        <item>Millennium Park</item>
+        <item>Shedd Aquarium</item>
+        <item>Willis Tower</item>
+    </string-array>
+
+    <string-array name="listOfRestaurants">
+        <item>Tzuco</item>
+        <item>Boka</item>
+        <item>Alinea</item>
+        <item>Kumiko</item>
+        <item>Mi Tocaya Antojeria</item>
+        <item>Jeong</item>
+        <item>Vajra</item>
+    </string-array>
+</resources>
