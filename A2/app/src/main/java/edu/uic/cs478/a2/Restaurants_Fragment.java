@@ -2,20 +2,20 @@ package edu.uic.cs478.a2;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class Attractions_Fragment extends android.support.v4.app.ListFragment {
-    private ListSelectionListener mListener = null;
-    private static final String TAG = "Attractions_Fragment";
+public class Restaurants_Fragment extends ListFragment {
+    private Restaurants_Fragment.ListSelectionListener mListener = null;
+    private static final String TAG = "Restaurants_Fragment";
 
     public interface ListSelectionListener {
         void onListSelection(int index);
     }
+
 
     @Override
     public void onListItemClick(ListView l, View v, int pos, long id) {
@@ -30,8 +30,7 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
         super.onAttach(activity);
 
         try {
-            mListener = (ListSelectionListener) activity;
-
+            mListener = (Restaurants_Fragment.ListSelectionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnListSelectionListener");
@@ -46,16 +45,7 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
         getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         setListAdapter(new ArrayAdapter<String>(getActivity(),
-                R.layout.names, ShowAttractions.attNameArray));
-        setRetainInstance(true);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedState) {
-        Log.i(TAG, getClass().getSimpleName() + ":entered onCreateView()");
-        View retView =  super.onCreateView(inflater, container, savedState) ;
-        return retView ;
+                R.layout.names, ShowRestaurants.restNameArray));
     }
 
     @Override
@@ -93,7 +83,6 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
     public void onDetach() {
         Log.i(TAG, getClass().getSimpleName() + ":entered onDetach()");
         super.onDetach();
-
     }
 
 
@@ -108,5 +97,4 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
         Log.i(TAG, getClass().getSimpleName() + ":entered onDestroyView()");
         super.onDestroyView();
     }
-
 }

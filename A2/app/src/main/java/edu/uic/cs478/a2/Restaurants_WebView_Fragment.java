@@ -6,62 +6,55 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.webkit.WebView;
 
-public class Attractions_Fragment extends android.support.v4.app.ListFragment {
-    private ListSelectionListener mListener = null;
-    private static final String TAG = "Attractions_Fragment";
+public class Restaurants_WebView_Fragment extends android.support.v4.app.Fragment {
+    private static final String TAG = "Restaurants_WebView_Fragment";
 
-    public interface ListSelectionListener {
-        void onListSelection(int index);
+    private WebView webInfo = null;
+    private int mCurrIdx = -1;
+    private int mQuoteArrLen;
+
+    int getShownIndex() {
+        return mCurrIdx;
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int pos, long id) {
-        getListView().setItemChecked(pos, true);
-        Log.i("Position clicked", pos + "");
-        mListener.onListSelection(pos);
-    }
+    void showQuoteAtIndex(int newIndex) {
+        if (newIndex < 0 || newIndex >= mQuoteArrLen)
+            return;
+        mCurrIdx = newIndex;
+        Log.i("Position", ShowRestaurants.restUrlArray[mCurrIdx]);
 
-    @Override
-    public void onAttach(Context activity) {
-        Log.i(TAG, getClass().getSimpleName() + ":entered onAttach()");
-        super.onAttach(activity);
-
-        try {
-            mListener = (ListSelectionListener) activity;
-
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnListSelectionListener");
-        }
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedState) {
-        Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
-        super.onActivityCreated(savedState);
-
-        getListView().setChoiceMode(ListView.CHOICE_MODE_SINGLE);
-
-        setListAdapter(new ArrayAdapter<String>(getActivity(),
-                R.layout.names, ShowAttractions.attNameArray));
-        setRetainInstance(true);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedState) {
-        Log.i(TAG, getClass().getSimpleName() + ":entered onCreateView()");
-        View retView =  super.onCreateView(inflater, container, savedState) ;
-        return retView ;
+        webInfo.loadUrl(ShowRestaurants.restUrlArray[mCurrIdx]);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         Log.i(TAG, getClass().getSimpleName() + ":entered onCreate()");
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(Context activity) {
+        Log.i(TAG, getClass().getSimpleName() + ":entered onAttach()");
+        super.onAttach(activity);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        Log.i(TAG, getClass().getSimpleName() + ":entered onCreateView()");
+
+        return inflater.inflate(R.layout.webview_fragment, container, false);
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        Log.i(TAG, getClass().getSimpleName() + ":entered onActivityCreated()");
+        super.onActivityCreated(savedInstanceState);
+
+        webInfo = (WebView) getActivity().findViewById(R.id.webViewInfo);
+        mQuoteArrLen = ShowRestaurants.restUrlArray.length;
     }
 
     @Override
@@ -93,7 +86,6 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
     public void onDetach() {
         Log.i(TAG, getClass().getSimpleName() + ":entered onDetach()");
         super.onDetach();
-
     }
 
 
@@ -108,5 +100,4 @@ public class Attractions_Fragment extends android.support.v4.app.ListFragment {
         Log.i(TAG, getClass().getSimpleName() + ":entered onDestroyView()");
         super.onDestroyView();
     }
-
 }

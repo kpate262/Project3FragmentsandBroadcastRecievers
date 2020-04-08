@@ -7,11 +7,21 @@
         <item>The Lincoln Park Zoo</item>
         <item>Navy Pier</item>
         <item>The Museum of Science and Industry</item>
-        <item>The Art Institute</item>
-        <item>The TILT</item>
+        <item>The Art Institute of Chicago</item>
+        <item>Chicago History Museum</item>
         <item>Millennium Park</item>
         <item>Shedd Aquarium</item>
         <item>Willis Tower</item>
+    </string-array>
+    <string-array name="attUrls">
+        <item>https://www.timeout.com/chicago/things-to-do/lincoln-park-zoo-chicago-il</item>
+        <item>https://www.timeout.com/chicago/things-to-do/navy-pier-chicago-il</item>
+        <item>https://www.timeout.com/chicago/museums/museum-of-science-and-industry-chicago-il</item>
+        <item>https://www.timeout.com/chicago/museums/art-institute-of-chicago-chicago-il</item>
+        <item>https://www.timeout.com/chicago/museums/chicago-history-museum</item>
+        <item>https://www.timeout.com/chicago/attractions/millennium-park-chicago-il</item>
+        <item>https://www.timeout.com/chicago/attractions/shedd-aquarium-chicago-il</item>
+        <item>https://www.timeout.com/chicago/things-to-do/willis-tower-skydeck-chicago-il</item>
     </string-array>
 
     <string-array name="listOfRestaurants">
@@ -22,5 +32,15 @@
         <item>Mi Tocaya Antojeria</item>
         <item>Jeong</item>
         <item>Vajra</item>
+    </string-array>
+
+    <string-array name="restUrls">
+        <item>https://www.timeout.com/chicago/restaurants/tzuco</item>
+        <item>https://www.timeout.com/chicago/restaurants/boka</item>
+        <item>https://www.timeout.com/chicago/restaurants/alinea</item>
+        <item>https://www.timeout.com/chicago/bars/kumiko</item>
+        <item>https://www.timeout.com/chicago/restaurants/mi-tocaya-antojeria</item>
+        <item>https://www.timeout.com/chicago/restaurants/jeong</item>
+        <item>https://www.timeout.com/chicago/restaurants/vajra</item>
     </string-array>
 </resources>
