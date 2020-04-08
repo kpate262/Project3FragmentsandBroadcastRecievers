@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             attButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                   Toast.makeText(v.getContext(), "Chicago, here I come!!!",
+                            Toast.LENGTH_LONG).show() ;
                     Intent attIntent = new Intent(SIGNATURE);
                     attIntent.putExtra("type", "1");
                     sendBroadcast(attIntent);
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             restButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Where the food at???",
+                            Toast.LENGTH_LONG).show() ;
                     Intent restIntent = new Intent(SIGNATURE);
                     restIntent.putExtra("type", "2");
                     sendBroadcast(restIntent);

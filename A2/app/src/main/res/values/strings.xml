@@ -2,6 +2,7 @@
     <string name="app_name">A2</string>
     <string name="att">Attractions</string>
     <string name="rest">Restaurants</string>
+    <string name="homePage">https://www.choosechicago.com/</string>
 
     <string-array name="listOfAttractions">
         <item>The Lincoln Park Zoo</item>

@@ -9,9 +9,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.webkit.WebView;
 
 public class MainActivity extends FragmentActivity {
-
+    private WebView webInfo = null;
     private static final String SIGNATURE =
             "edu.uic.cs478.sp2020.project3";
 
@@ -24,8 +25,9 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         Log.i("type", "inside oncreate()");
-
         registerReceiver(mReceiver, mFilter);
+        webInfo = findViewById(R.id.ChicagoInfo);
+        webInfo.loadUrl(getResources().getString(R.string.homePage));
     }
 
     @Override
@@ -51,8 +53,6 @@ public class MainActivity extends FragmentActivity {
                 return true;
 
             default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
         }

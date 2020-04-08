@@ -8,7 +8,6 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-
 public class MyReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -16,7 +15,7 @@ public class MyReceiver extends BroadcastReceiver {
 
         Log.i("Companion receiver", "Companion Receiver called into action!");
         Toast.makeText(context, "Programmatic receiver in actio33n! ",
-                Toast.LENGTH_LONG).show() ;
+                Toast.LENGTH_LONG);
 
         if(intent.getStringExtra("type").compareTo("1") == 0) {
             Activity att = (Activity) context;

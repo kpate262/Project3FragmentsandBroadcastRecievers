@@ -11,6 +11,6 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.i("Type", intent.getStringExtra("type"));
         Toast.makeText(context, "Programmatic receiver in action! ",
-                Toast.LENGTH_LONG).show() ;
+                Toast.LENGTH_LONG) ;
     }
 }
