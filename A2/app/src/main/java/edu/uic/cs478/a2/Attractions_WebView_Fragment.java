@@ -11,17 +11,17 @@ import android.webkit.WebView;
 
 public class Attractions_WebView_Fragment extends android.support.v4.app.Fragment {
     private static final String TAG = "Attractions_WebView_Fragment";
-
+    
     private WebView webInfo = null;
     private int mCurrIdx = -1;
-    private int mQuoteArrLen;
+    private int attUrlArrLen;
 
     int getShownIndex() {
         return mCurrIdx;
     }
 
     void showQuoteAtIndex(int newIndex) {
-        if (newIndex < 0 || newIndex >= mQuoteArrLen)
+        if (newIndex < 0 || newIndex >= attUrlArrLen)
             return;
         mCurrIdx = newIndex;
         Log.i("Position", ShowAttractions.attUrlArray[mCurrIdx]);
@@ -57,7 +57,7 @@ public class Attractions_WebView_Fragment extends android.support.v4.app.Fragmen
         super.onActivityCreated(savedInstanceState);
 
         webInfo = (WebView) getActivity().findViewById(R.id.webViewInfo);
-        mQuoteArrLen = ShowAttractions.attUrlArray.length;
+        attUrlArrLen = ShowAttractions.attUrlArray.length;
         setRetainInstance(true);
     }
 

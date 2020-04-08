@@ -22,7 +22,6 @@ public class MyReceiver extends BroadcastReceiver {
             Intent showAttractions = new Intent(context, ShowAttractions.class);
             showAttractions.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             att.startActivity(showAttractions);
-           //att.finish();
         }
         else if (intent.getStringExtra("type").compareTo("2") == 0){
             Activity rest = (Activity) context;

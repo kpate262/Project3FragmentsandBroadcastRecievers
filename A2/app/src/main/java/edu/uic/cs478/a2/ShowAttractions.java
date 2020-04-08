@@ -15,7 +15,7 @@ public class ShowAttractions extends MainActivity implements Attractions_Fragmen
     private android.support.v4.app.FragmentManager mFragmentManager;
     private Attractions_Fragment attr_Fragment = null;
     private final Attractions_WebView_Fragment webView_fragment = new Attractions_WebView_Fragment();
-    private FrameLayout mTitleFrameLayout, mQuotesFrameLayout;
+    private FrameLayout places, placesWebLayout;
     private static final int MATCH_PARENT = LinearLayout.LayoutParams.MATCH_PARENT;
     private static final String TAG = "ShowAttractions";
 
@@ -28,8 +28,8 @@ public class ShowAttractions extends MainActivity implements Attractions_Fragmen
         attNameArray = getResources().getStringArray(R.array.listOfAttractions);
         attUrlArray = getResources().getStringArray(R.array.attUrls);
 
-        mTitleFrameLayout = (FrameLayout) findViewById(R.id.names);
-        mQuotesFrameLayout = (FrameLayout) findViewById(R.id.webView);
+        places = (FrameLayout) findViewById(R.id.names);
+        placesWebLayout = (FrameLayout) findViewById(R.id.webView);
 
         mFragmentManager = getSupportFragmentManager();
 
@@ -58,16 +58,16 @@ public class ShowAttractions extends MainActivity implements Attractions_Fragmen
 
     private int portLayout(){
         if (!webView_fragment.isAdded()) {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(
+            places.setLayoutParams(new LinearLayout.LayoutParams(
                     MATCH_PARENT, MATCH_PARENT));
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            placesWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT));
             return 0;
         } else {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            places.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 0f));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            placesWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 1f));
             return 1;
         }
@@ -75,17 +75,17 @@ public class ShowAttractions extends MainActivity implements Attractions_Fragmen
 
     private int landLayout() {
         if (!webView_fragment.isAdded()) {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(
+            places.setLayoutParams(new LinearLayout.LayoutParams(
                     MATCH_PARENT, MATCH_PARENT));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            placesWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT));
             return 0;
         } else {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            places.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 1f));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            placesWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 2f));
             return 1;
         }
@@ -115,9 +115,7 @@ public class ShowAttractions extends MainActivity implements Attractions_Fragmen
 
     @Override
     public void onConfigurationChanged(Configuration config){
-        super.onResume();
-        //Configuration config = getResources().getConfiguration();
-
+        super.onConfigurationChanged(config);
         if(config.toString().contains("port")){
             Log.i("selected", "port");
             portLayout();

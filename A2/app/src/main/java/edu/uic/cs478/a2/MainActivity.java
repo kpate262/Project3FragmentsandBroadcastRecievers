@@ -13,6 +13,7 @@ import android.webkit.WebView;
 
 public class MainActivity extends FragmentActivity {
     private WebView webInfo = null;
+
     private static final String SIGNATURE =
             "edu.uic.cs478.sp2020.project3";
 

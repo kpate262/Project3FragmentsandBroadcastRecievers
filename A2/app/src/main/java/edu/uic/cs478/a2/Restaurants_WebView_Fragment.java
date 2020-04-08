@@ -13,14 +13,14 @@ public class Restaurants_WebView_Fragment extends android.support.v4.app.Fragmen
 
     private WebView webInfo = null;
     private int mCurrIdx = -1;
-    private int mQuoteArrLen;
+    private int restUrlArrLen;
 
     int getShownIndex() {
         return mCurrIdx;
     }
 
     void showQuoteAtIndex(int newIndex) {
-        if (newIndex < 0 || newIndex >= mQuoteArrLen)
+        if (newIndex < 0 || newIndex >= restUrlArrLen)
             return;
         mCurrIdx = newIndex;
         Log.i("Position", ShowRestaurants.restUrlArray[mCurrIdx]);
@@ -54,7 +54,7 @@ public class Restaurants_WebView_Fragment extends android.support.v4.app.Fragmen
         super.onActivityCreated(savedInstanceState);
 
         webInfo = (WebView) getActivity().findViewById(R.id.webViewInfo);
-        mQuoteArrLen = ShowRestaurants.restUrlArray.length;
+        restUrlArrLen = ShowRestaurants.restUrlArray.length;
     }
 
     @Override

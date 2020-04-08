@@ -14,7 +14,7 @@ public class ShowRestaurants extends MainActivity implements Restaurants_Fragmen
     private android.support.v4.app.FragmentManager mFragmentManager;
     private Restaurants_Fragment rest_Fragment = null;
     private final Restaurants_WebView_Fragment webView_fragment = new Restaurants_WebView_Fragment();
-    private FrameLayout mTitleFrameLayout, mQuotesFrameLayout;
+    private FrameLayout restaurants, restWebLayout;
     private static final int MATCH_PARENT = LinearLayout.LayoutParams.MATCH_PARENT;
     private static final String TAG = "ShowAttractions";
 
@@ -27,8 +27,8 @@ public class ShowRestaurants extends MainActivity implements Restaurants_Fragmen
         restNameArray = getResources().getStringArray(R.array.listOfRestaurants);
         restUrlArray = getResources().getStringArray(R.array.restUrls);
 
-        mTitleFrameLayout = (FrameLayout) findViewById(R.id.names);
-        mQuotesFrameLayout = (FrameLayout) findViewById(R.id.webView);
+        restaurants = (FrameLayout) findViewById(R.id.names);
+        restWebLayout = (FrameLayout) findViewById(R.id.webView);
 
         mFragmentManager = getSupportFragmentManager();
 
@@ -57,17 +57,17 @@ public class ShowRestaurants extends MainActivity implements Restaurants_Fragmen
 
     private int portLayout(){
         if (!webView_fragment.isAdded()) {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(
+            restaurants.setLayoutParams(new LinearLayout.LayoutParams(
                     MATCH_PARENT, MATCH_PARENT));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT));
             return 0;
         } else {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restaurants.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 0f));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 1f));
             return 1;
         }
@@ -75,17 +75,17 @@ public class ShowRestaurants extends MainActivity implements Restaurants_Fragmen
 
     private int landLayout() {
         if (!webView_fragment.isAdded()) {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(
+            restaurants.setLayoutParams(new LinearLayout.LayoutParams(
                     MATCH_PARENT, MATCH_PARENT));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT));
             return 0;
         } else {
-            mTitleFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restaurants.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 1f));
 
-            mQuotesFrameLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
+            restWebLayout.setLayoutParams(new LinearLayout.LayoutParams(0,
                     MATCH_PARENT, 2f));
             return 1;
         }
@@ -113,9 +113,7 @@ public class ShowRestaurants extends MainActivity implements Restaurants_Fragmen
 
     @Override
     public void onConfigurationChanged(Configuration config){
-        super.onResume();
-        //Configuration config = getResources().getConfiguration();
-
+        super.onConfigurationChanged(config);
         if(config.toString().contains("port")){
             Log.i("selected", "port");
             portLayout();
